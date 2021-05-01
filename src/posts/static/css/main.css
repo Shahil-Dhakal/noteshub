@@ -1,13 +1,19 @@
-body{
+{
+  box-sizing: border-box;
+}
+
+html,body{
+  height:100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   background: #D7DBDD;
   font-family:"poppins",sans-serif;
 }
 
 nav{
-  background:black
+  background:black;
+  position:sticky;
+  width:100%;
 }
 
 nav:after{
@@ -19,12 +25,13 @@ nav:after{
 nav .logo{
   float: left;
   color: white;
-  font-size:30px;
+  font-size:35px;
   font-style:italic;
   font-weight: 750px;
   line-height: :25px;
   padding-left: 70px;
   padding-top: 32px;
+  color:lime;
 }
 
 nav ul{
@@ -61,7 +68,6 @@ nav ul li a:hover{
 nav ul ul{
   position: absolute;
   top:70px;
-  border-top: 4px solid lime;
   opacity: 0;
   visibility: hidden;
   transition: top .2s;
@@ -77,7 +83,6 @@ nav ul ul li{
   position: relative;
   margin: 0px;
   width: 150px;
-  float:
   display:list-item;
   border-bottom: 1px solid rgba(0,0,0,0.3);
 }
@@ -89,6 +94,52 @@ nav ul ul li a{
 nav ul ul li a:hover{
   color: lime;
   box-shadow: none;
+}
+main {
+  min-height: 100%;
+}
+
+.main .h1 {
+  color: halogen;
+  text-align: center;
+}
+
+.footer {
+  background: black;
+  color: white;
+  position: relative;
+  height: 400px;
+}
+
+.footer .footer-content {
+  border: 2px solid lime;
+  height: 370px;
+  display: flex;
+}
+.footer .footer-content h2, p{
+  text-align: center;
+}
+.footer .footer-content .footer-part{
+  flex: 1;
+  border:1px solid white;
+  padding:25px;
+}
+.footer .footer-content .contact .contact-input{
+margin-bottom: 10px;
+line-height: 1.5rem;
+padding:.7rem 1.2rem;
+}
+
+.footer .footer-bottom {
+  height: 30px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding-top: 25px;
+  color: white;
+  text-align: center;
+  background: grey;
+  width: 100%;
 }
 
 p.date { 
