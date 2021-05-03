@@ -2,13 +2,18 @@
 from django.urls import path
 
 # app imports
-from .views import PostListView, post_detail, post_share, post_about
+from .views import post_home, PostListView, post_detail, post_share, post_about
 
 
 app_name = 'posts'
 urlpatterns = [
         path(
             route = '',
+            view  = post_home,
+            name  = 'posts_home'),
+
+        path(
+            route = 'posts/',
             view  = PostListView.as_view(),
             name  = 'posts_list'),
 

@@ -8,6 +8,14 @@ from .models import Post, Comment
 from .forms import EmailPostForm, CommentForm
 
 
+def post_home(request):
+    template_name = "posts/home.html"
+    return render(request, template_name)
+
+def post_about(request):
+    template_name = "posts/about.html"
+    return render(request, template_name)
+
 class PostListView(ListView):
     """
     Listview for our home page containing all published posts
@@ -73,7 +81,3 @@ def post_share(request, post_id):
         form  = EmailPostForm()
     return render(request, template_name='posts/share.html',\
                  context={ 'post': post, 'form': form, 'sent': sent })
-
-def post_about(request):
-    template_name = "posts/about.html"
-    return render(request, template_name)
