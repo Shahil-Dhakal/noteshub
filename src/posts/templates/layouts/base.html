@@ -19,25 +19,15 @@
         <nav>
             <div class="logo">Noteshub</div>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Notes</a>
+                    <li><a href="{% url 'noteshub:posts_home' %}">Home</a></li>
+                    <li><a href="{% url 'noteshub:posts_subject' 'all' %}">Notes</a>
                         <ul>
-                            <li><a href="#">Physics</a></li>
-                            <li><a href="#">Maths</a></li>
-                            <li><a href="#">C Prog</a></li>
-                            <li><a href="#">PST</a></li>
-                            <li><a href="#">CT</a></li>
-                            <li><a href="#">FIT</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Solutions</a>
-                        <ul>
-                            <li><a href="#">Physics</a></li>
-                            <li><a href="#">Maths</a></li>
-                            <li><a href="#">C Prog</a></li>
-                            <li><a href="#">PST</a></li>
-                            <li><a href="#">CT</a></li>
-                            <li><a href="#">FIT</a></li>
+                            <li><a href="{% url 'noteshub:posts_subject' 'physics' %}">Physics</a></li>
+                            <li><a href="{% url 'noteshub:posts_subject' 'maths' %}">Maths</a></li>
+                            <li><a href="{% url 'noteshub:posts_subject' 'c' %}">C</a></li>
+                            <li><a href="{% url 'noteshub:posts_subject' 'pst' %}">PST</a></li>
+                            <li><a href="{% url 'noteshub:posts_subject' 'fit' %}">FIT</a></li>
+                            <li><a href="{% url 'noteshub:posts_subject' 'ct' %}">CT</a></li>
                         </ul>
                     </li>
                     <li><a href="{% url 'noteshub:posts_about' %}">About Us</a></li>

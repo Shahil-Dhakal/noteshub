@@ -29,8 +29,19 @@ class Post(TimeStampedModel):
             ('draft', 'Draft'),
             ('published', 'Published'),
             )
+
+    SUBJECT_CHOICES = (
+            ('physics', 'Physics'),
+            ('maths', 'Maths'),
+            ('ct', 'CT'),
+            ('c', 'C'),
+            ('fit', 'FIT'),
+            ('pst', 'PST'),
+            )
+
     title = models.CharField(max_length=100)
     title_slug = models.SlugField(null=True, blank=True, max_length=200, unique_for_date='created')
+    subject = models.CharField(max_length=8, choices=SUBJECT_CHOICES)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     description = models.TextField(max_length=200)
     file_field = models.FileField(upload_to='user_uploads/', null=True)
