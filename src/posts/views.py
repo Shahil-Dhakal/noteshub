@@ -73,3 +73,7 @@ def post_share(request, post_id):
         form  = EmailPostForm()
     return render(request, template_name='posts/share.html',\
                  context={ 'post': post, 'form': form, 'sent': sent })
+
+def post_about(request):
+    template_name = "posts/about.html"
+    return render(request, template_name)

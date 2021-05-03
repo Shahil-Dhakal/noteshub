@@ -2,7 +2,7 @@
 from django.urls import path
 
 # app imports
-from .views import PostListView, post_detail, post_share
+from .views import PostListView, post_detail, post_share, post_about
 
 
 app_name = 'posts'
@@ -21,4 +21,9 @@ urlpatterns = [
             route = '<int:post_id>/share/',
             view  = post_share,
             name  = 'posts_share'),
+        
+        path(
+            route = 'about/',
+            view  = post_about,
+            name  = 'posts_about'),
 ]
