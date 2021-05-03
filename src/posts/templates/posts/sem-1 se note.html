@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layouts/base.html" %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NOTESHUB/NOTES</title>
-  <link href="other.css" rel="stylesheet" type="text/css">
-</head>
-
-<body>
-  <section id="header">
+{% block content %}
+<section id="header">
     <h1>SEM-1 SE NOTES</h1>
   </section>
   <section class="main">
-    <div class="subject-container">
-      <ul>
+    
+      <ul>SUBJECTS
           <li><a href="#">Physics</a></li>
           <li><a href="#">Mathematics</a></li>
           <li><a href="#">C Programming</a></li>
@@ -24,30 +15,6 @@
           <li><a href="#">Fundamental of IT</a></li>
       </ul>
     </div>
-    <div class="content-container"></div>
   </section>
-  <!--footer-->
-  <div class="footer">
-    <div class="footer-content">
-      <div class="footer-part About">
-        <h2>NOTESHUB</h2>
-        <p>Noteshub is the beginning of our digital revolution in eduacation field in Nepal.</P>
-      </div>
-      <div class="footer-part Links">
-        <h2>Links</h2>
-      </div>
-      <div class="footer-part contact">
-        <h2>Contact Us</h2><br>
-        <form action="home.html" method="post">
-          <input type="email" name="email" class="text-input contact-input" placeholder="Email address here....">
-          <textarea name="massage" class="text-input contact-input" placeholder="your message here....."></textarea><br>
-          <button type="submit" class="btn">Send</button>
-      </div>
-    </div>
-    <div class="footer-bottom">&copy;Noteshub</div>
-  </div>
-  <!--footer-->
-
-</body>
-
-</html>
+{% endblock content %}
+  
