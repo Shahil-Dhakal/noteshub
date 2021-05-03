@@ -2,15 +2,20 @@
 from django.urls import path
 
 # app imports
-from .views import PostListView, post_detail, post_share
+from .views import post_home, post_subject, post_detail, post_share, post_about
 
 
 app_name = 'posts'
 urlpatterns = [
         path(
             route = '',
-            view  = PostListView.as_view(),
-            name  = 'posts_list'),
+            view  = post_home,
+            name  = 'posts_home'),
+
+        path(
+            route = 'subjects/<str:subject>/',
+            view  = post_subject,
+            name  = 'posts_subject'),
 
         path(
             route = '<int:year>/<int:month>/<int:day>/<slug:post_slug>/',
@@ -21,4 +26,9 @@ urlpatterns = [
             route = '<int:post_id>/share/',
             view  = post_share,
             name  = 'posts_share'),
+        
+        path(
+            route = 'about/',
+            view  = post_about,
+            name  = 'posts_about'),
 ]

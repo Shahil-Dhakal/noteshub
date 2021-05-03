@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-    {% for post in recent_posts %}
+    {% for post in subject_posts %}
         <h2>
             <a href="{{ post.get_absolute_url }}">
                 {{ post.title }}
@@ -11,6 +11,8 @@
             <i> Published on {{ post.created|date:'M j, Y' }} by {{ post.author }}</i>
         </p>
         {{ post.description|truncatewords:30|linebreaks }}
+    {% empty %}
+        <h2>There appears to be no post for this subject.<h2>
     {% endfor %}
     {% if is_paginated %}
         {% include "layouts/pagination.html" %}

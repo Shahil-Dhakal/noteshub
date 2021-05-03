@@ -18,66 +18,27 @@
     <header>
         <nav>
             <div class="logo">Noteshub</div>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Notes</a>
-                    <ul>
-                        <li><a href="sem-1 se note.html">SEM-1 SE</a></li>
-                        <!--<li><a href="#">Maths</a></li>
-                        <li><a href="#">C Prog</a></li>
-                        <li><a href="#">PST</a></li>
-                        <li><a href="#">CT</a></li>
-                        <li><a href="#">FIT</a></li>-->
-                    </ul>
-                </li>
-                <li><a href="#">Solutions</a>
-                    <ul>
-                        <li><a href="sem-1 se solution.html">SEM-1 SE</a></li>
-                        <!--<li><a href="#">Maths</a></li>
-                        <li><a href="#">C Prog</a></li>
-                        <li><a href="#">PST</a></li>
-                        <li><a href="#">CT</a></li>
-                        <li><a href="#">FIT</a></li>-->
-                    </ul>
-                </li>
-                <li><a href="About.html">About Us</a></li>
-                <li><a href="#account">Account</a>
-                    <ul>
-                        <li><a href="#login">Login</a></li>
-                        <li><a href="#signup">Signup</a></li>
-                    </ul>
-                </li>
-            </ul>
+                <ul>
+                    <li><a href="{% url 'noteshub:posts_home' %}">Home</a></li>
+                    <li><a href="{% url 'noteshub:posts_subject' 'all' %}">Notes</a>
+                        <ul>
+                            <li><a href="{% url 'noteshub:posts_subject' 'physics' %}">Physics</a></li>
+                            <li><a href="{% url 'noteshub:posts_subject' 'maths' %}">Maths</a></li>
+                            <li><a href="{% url 'noteshub:posts_subject' 'c' %}">C</a></li>
+                            <li><a href="{% url 'noteshub:posts_subject' 'pst' %}">PST</a></li>
+                            <li><a href="{% url 'noteshub:posts_subject' 'fit' %}">FIT</a></li>
+                            <li><a href="{% url 'noteshub:posts_subject' 'ct' %}">CT</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'noteshub:posts_about' %}">About Us</a></li>
+                </ul>
         </nav>
-    </header>
-    <!--content area -->
-    <div class="main">
-        {% block content %}
-        {% endblock content %}
-        <h1 class="h1">WELCOME TO NOTESHUB</h1>
-    </div>
-    <!--footer-->
-    <div class="footer">
-        <div class="footer-content">
-            <div class="footer-part About">
-                <h2>NOTESHUB</h2>
-                <p>Noteshub is the beginning of our digital revolution in eduacation field in Nepal.</P>
-            </div>
-            <div class="footer-part Links">
-                <h2>Links</h2>
-            </div>
-            <div class="footer-part contact">
-                <h2>Contact Us</h2><br>
-                <form action="home.html" method="post">
-                    <input type="email" name="email" class="text-input contact-input"
-                        placeholder="Email address here....">
-                    <textarea name="massage" class="text-input contact-input"
-                        placeholder="your message here....."></textarea><br>
-                    <button type="submit" class="btn">Send</button>
-            </div>
+       </header>
+       <!--content area -->
+        <div class="main">
+                {% block content %}
+                {% endblock content %}
         </div>
-        <div class="footer-bottom">&copy;Noteshub</div>
-    </div>
-</body>
+    </body>
 
 </html>

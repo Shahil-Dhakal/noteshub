@@ -8,15 +8,34 @@ from .models import Post, Comment
 from .forms import EmailPostForm, CommentForm
 
 
-class PostListView(ListView):
+def post_home(request):
     """
-    Listview for our home page containing all published posts
+    Function view to render the home page
     """
-    # use a specific queryset instead of retrieving all objects
-    queryset = Post.published.all()
-    context_object_name = 'recent_posts'
-    paginate_by = 3
-    template_name = "posts/list.html" # <app>/<model>_<viewtype>.html
+    template_name = "posts/home.html"
+    return render(request, template_name)
+
+def post_about(request):
+    """
+    Function view to render the about page
+    """
+    template_name = "posts/about.html"
+    return render(request, template_name)
+
+def post_subject(request, subject):
+    """
+    Function view to render posts on the basis of
+    subject passed to the url
+    """
+    if subject == 'all':
+        posts = Post.published.all()
+    else:
+        posts = Post.published.filter(subject=subject)
+    template_name = "posts/list.html"
+    context = {
+            'subject_posts': posts,
+            }
+    return render(request, template_name, context)
 
 def post_detail(request, year, month, day, post_slug):
     """
