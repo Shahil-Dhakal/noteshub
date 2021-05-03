@@ -1,4 +1,4 @@
-{
+*{
   box-sizing: border-box;
 }
 
@@ -28,7 +28,7 @@ nav .logo{
   font-size:35px;
   font-style:italic;
   font-weight: 750px;
-  line-height: :25px;
+  line-height: 25px;
   padding-left: 70px;
   padding-top: 32px;
   color:lime;
@@ -43,7 +43,7 @@ nav ul{
 }
 
 nav ul li{
-  float:left;
+  float:none;
   display: inline-block;
   background: black ;
   margin:2px;
@@ -62,7 +62,7 @@ nav ul li a:hover{
   color: #39FF01;
   border-radius:5px;
   box-shadow: 0 0 5px #39FF90,
-             0 0 5px #39FF90;
+  0 0 5px #39FF90;
 }
 
 nav ul ul{
