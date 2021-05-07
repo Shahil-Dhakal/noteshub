@@ -1,6 +1,7 @@
 # Core Django imports
 from django.shortcuts import render, get_object_or_404
 from django.core.mail import send_mail
+from django.core.paginator import (Paginator, EmptyPage, PageNotAnInteger)
 
 # app imports
 from .models import Post, Comment
@@ -24,7 +25,7 @@ def post_about(request):
     template_name = "posts/about.html"
     return render(request, template_name)
 
-def post_list(request, subject, tag_slug=None):
+def post_list(request, subject=None, tag_slug=None):
     """
     Function view to render posts on the basis of
     subject passed to the url
@@ -37,9 +38,22 @@ def post_list(request, subject, tag_slug=None):
         tag = get_object_or_404(Tag, slug=tag_slug)
         posts = posts.filter(tags__in=[tag])
 
+    # pagination
+    paginator = Paginator(posts, 2) # 2 posts in each page
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver the first page
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range, deliver the last page
+        posts = paginator.page(paginator.num_pages)
+
     template_name = "posts/list.html"
     context = {
             'object_list': posts,
+            'page': page,
             }
     return render(request, template_name, context)
 

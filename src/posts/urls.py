@@ -15,7 +15,12 @@ urlpatterns = [
         path(
             route = 'subjects/<str:subject>/',
             view  = post_list,
-            name  = 'posts_subject'),
+            name  = 'posts_list_subject'),
+
+        path(
+            route = 'tags/<slug:tag_slug>/',
+            view  = post_list,
+            name  = 'posts_list_tags'),
 
         path(
             route = '<int:year>/<int:month>/<int:day>/<slug:post_slug>/',

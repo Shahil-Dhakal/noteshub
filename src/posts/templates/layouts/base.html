@@ -20,14 +20,14 @@
             <div class="logo">Noteshub</div>
                 <ul>
                     <li><a href="{% url 'noteshub:posts_home' %}">Home</a></li>
-                    <li><a href="{% url 'noteshub:posts_subject' 'all' %}">Notes</a>
+                    <li><a href="{% url 'noteshub:posts_list_subject' 'all' %}">Notes</a>
                         <ul>
-                            <li><a href="{% url 'noteshub:posts_subject' 'physics' %}">Physics</a></li>
-                            <li><a href="{% url 'noteshub:posts_subject' 'maths' %}">Maths</a></li>
-                            <li><a href="{% url 'noteshub:posts_subject' 'c' %}">C</a></li>
-                            <li><a href="{% url 'noteshub:posts_subject' 'pst' %}">PST</a></li>
-                            <li><a href="{% url 'noteshub:posts_subject' 'fit' %}">FIT</a></li>
-                            <li><a href="{% url 'noteshub:posts_subject' 'ct' %}">CT</a></li>
+                            <li><a href="{% url 'noteshub:posts_list_subject' 'physics' %}">Physics</a></li>
+                            <li><a href="{% url 'noteshub:posts_list_subject' 'maths' %}">Maths</a></li>
+                            <li><a href="{% url 'noteshub:posts_list_subject' 'c' %}">C</a></li>
+                            <li><a href="{% url 'noteshub:posts_list_subject' 'pst' %}">PST</a></li>
+                            <li><a href="{% url 'noteshub:posts_list_subject' 'fit' %}">FIT</a></li>
+                            <li><a href="{% url 'noteshub:posts_list_subject' 'ct' %}">CT</a></li>
                         </ul>
                     </li>
                     <li><a href="{% url 'noteshub:posts_about' %}">About Us</a></li>
