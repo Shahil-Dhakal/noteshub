@@ -2,7 +2,7 @@
 from django.urls import path
 
 # app imports
-from .views import post_home, post_subject, post_detail, post_share, post_about
+from .views import post_home, post_list, post_detail, post_share, post_about
 
 
 app_name = 'posts'
@@ -14,7 +14,7 @@ urlpatterns = [
 
         path(
             route = 'subjects/<str:subject>/',
-            view  = post_subject,
+            view  = post_list,
             name  = 'posts_subject'),
 
         path(

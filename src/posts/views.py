@@ -1,11 +1,13 @@
 # Core Django imports
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView
 from django.core.mail import send_mail
 
 # app imports
 from .models import Post, Comment
 from .forms import EmailPostForm, CommentForm
+
+# third-party packages
+from taggit.models import Tag
 
 
 def post_home(request):
@@ -22,18 +24,22 @@ def post_about(request):
     template_name = "posts/about.html"
     return render(request, template_name)
 
-def post_subject(request, subject):
+def post_list(request, subject, tag_slug=None):
     """
     Function view to render posts on the basis of
     subject passed to the url
     """
-    if subject == 'all':
-        posts = Post.published.all()
-    else:
-        posts = Post.published.filter(subject=subject)
+    posts = Post.published.all()
+    if subject:
+        if not subject == 'all':
+            posts = Post.published.filter(subject=subject)
+    elif tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        posts = posts.filter(tags__in=[tag])
+
     template_name = "posts/list.html"
     context = {
-            'subject_posts': posts,
+            'object_list': posts,
             }
     return render(request, template_name, context)
 

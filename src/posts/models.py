@@ -7,6 +7,9 @@ from django.contrib.auth.models import User
 # package imports
 from core.models import TimeStampedModel
 
+# third-party imports
+from taggit.managers import TaggableManager
+
 
 class PublishedManager(models.Manager):
     """
@@ -46,6 +49,7 @@ class Post(TimeStampedModel):
     description = models.TextField(max_length=200)
     file_field = models.FileField(upload_to='user_uploads/', null=True)
     status = models.CharField(max_length=9, choices=STATUS_CHOICES, default='draft')
+    tags = TaggableManager()
     # our custom manager
     published = PublishedManager()
     # we'll also keep the default `objects` manager

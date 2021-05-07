@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'taggit',
     'crispy_forms',
     'posts.apps.PostsConfig',
     'django.contrib.admin',
