@@ -1,22 +1,61 @@
 # Core Django imports
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView
 from django.core.mail import send_mail
+from django.core.paginator import (Paginator, EmptyPage, PageNotAnInteger)
 
 # app imports
 from .models import Post, Comment
 from .forms import EmailPostForm, CommentForm
 
+# third-party packages
+from taggit.models import Tag
 
-class PostListView(ListView):
+
+def post_home(request):
     """
-    Listview for our home page containing all published posts
+    Function view to render the home page
     """
-    # use a specific queryset instead of retrieving all objects
-    queryset = Post.published.all()
-    context_object_name = 'recent_posts'
-    paginate_by = 3
-    template_name = "posts/list.html" # <app>/<model>_<viewtype>.html
+    template_name = "posts/home.html"
+    return render(request, template_name)
+
+def post_about(request):
+    """
+    Function view to render the about page
+    """
+    template_name = "posts/about.html"
+    return render(request, template_name)
+
+def post_list(request, subject=None, tag_slug=None):
+    """
+    Function view to render posts on the basis of
+    subject or tags passed to the url
+    """
+    posts = Post.published.all()
+    if subject:
+        if not subject == 'all':
+            posts = Post.published.filter(subject=subject)
+    elif tag_slug:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+        posts = posts.filter(tags__in=[tag])
+
+    # pagination
+    paginator = Paginator(posts, 2) # 2 posts in each page
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver the first page
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range, deliver the last page
+        posts = paginator.page(paginator.num_pages)
+
+    template_name = "posts/list.html"
+    context = {
+            'object_list': posts,
+            'page': page,
+            }
+    return render(request, template_name, context)
 
 def post_detail(request, year, month, day, post_slug):
     """

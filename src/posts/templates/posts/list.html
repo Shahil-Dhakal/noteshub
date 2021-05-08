@@ -1,18 +1,28 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-    {% for post in recent_posts %}
+    {% for post in object_list %}
         <h2>
             <a href="{{ post.get_absolute_url }}">
                 {{ post.title }}
             </a>
         </h2>
+        <!-- need some CSS here!!-->
+        <p><b>Tags:</b> 
+            {% for tag in post.tags.all %}
+                <a href="{% url "noteshub:posts_list_tags" tag.slug %}">{{ tag.name }}</a>
+                {% comment %}add commas after tag names except the last one {% endcomment %}
+                {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
         <p class="date">
             <i> Published on {{ post.created|date:'M j, Y' }} by {{ post.author }}</i>
         </p>
         {{ post.description|truncatewords:30|linebreaks }}
+    {% empty %}
+        <h2>There appears to be no post for this subject.<h2>
     {% endfor %}
-    {% if is_paginated %}
-        {% include "layouts/pagination.html" %}
-    {% endif %}
+</section>
+{% comment %}pass the object i.e. object_list on which we're generating the paginator as page{% endcomment %}
+    {% include "layouts/pagination.html" with page=object_list %}
 {% endblock content %}

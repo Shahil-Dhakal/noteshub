@@ -1,4 +1,4 @@
-{
+*{
   box-sizing: border-box;
 }
 
@@ -28,7 +28,7 @@ nav .logo{
   font-size:35px;
   font-style:italic;
   font-weight: 750px;
-  line-height: :25px;
+  line-height: 25px;
   padding-left: 70px;
   padding-top: 32px;
   color:lime;
@@ -43,7 +43,7 @@ nav ul{
 }
 
 nav ul li{
-  float:left;
+  float:none;
   display: inline-block;
   background: black ;
   margin:2px;
@@ -62,7 +62,7 @@ nav ul li a:hover{
   color: #39FF01;
   border-radius:5px;
   box-shadow: 0 0 5px #39FF90,
-             0 0 5px #39FF90;
+  0 0 5px #39FF90;
 }
 
 nav ul ul{
@@ -82,7 +82,7 @@ nav ul li:hover > ul{
 nav ul ul li{
   position: relative;
   margin: 0px;
-  width: 150px;
+  width: 200px;
   display:list-item;
   border-bottom: 1px solid rgba(0,0,0,0.3);
 }
@@ -95,12 +95,32 @@ nav ul ul li a:hover{
   color: lime;
   box-shadow: none;
 }
+#header{
+  height:20vh;
+  width:100%;
+background: blue;
+
+}
+
+#header{
+  background-color:Black;
+  color:#C2CAD0;
+  text-align:center;
+  font-size:25px;
+  padding:5px;
+}
+.paragraph{
+  text-align: center;
+  font-family: serif;
+  font-size: 20px;
+}
+
 main {
   min-height: 100%;
 }
 
 .main .h1 {
-  color: halogen;
+  color: white;
   text-align: center;
 }
 
