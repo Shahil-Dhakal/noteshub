@@ -28,7 +28,7 @@ def post_about(request):
 def post_list(request, subject=None, tag_slug=None):
     """
     Function view to render posts on the basis of
-    subject passed to the url
+    subject or tags passed to the url
     """
     posts = Post.published.all()
     if subject:
