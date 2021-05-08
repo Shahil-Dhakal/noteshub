@@ -14,7 +14,7 @@
             Share this post
         </a>
     </p>
-    {% comment %}this is like calling comments.count() and assigning it a variable{% endcomment %}
+    {% comment %}calling comments.count() and assigning it a variable{% endcomment %}
     {% with comments.count as total_comments %}
         <h3> Comment{{ total_comments|pluralize }} ({{ total_comments }})</h3>
     {% endwith %}
