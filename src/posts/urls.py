@@ -23,7 +23,7 @@ urlpatterns = [
             name  = 'posts_list_tags'),
 
         path(
-            route = '<int:year>/<int:month>/<int:day>/<slug:post_slug>/',
+            route = 'post/<int:year>/<int:month>/<int:day>/<slug:post_slug>/',
             view  = post_detail,
             name  = 'posts_detail'),
 
