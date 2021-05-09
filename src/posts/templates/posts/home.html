@@ -1,4 +1,6 @@
 {% extends 'layouts/base.html' %}
+{% comment %}our custom template tag module{% endcomment %}
+{% load posts_tags %}
 
 {% block content %}
 <!-- Is this how you're supposed to do it? -->
@@ -6,6 +8,6 @@
     <h1> Welcome to noteshub </h1>
 </section>
 <section class="main">
-    <p> Blah Blah Blah </p>
+    <p>There are {% total_posts %} posts so far.</p>
 </section>
 {% endblock content %}
