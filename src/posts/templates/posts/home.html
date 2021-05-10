@@ -8,6 +8,10 @@
     <h1> Welcome to noteshub </h1>
 </section>
 <section class="main">
-    <p>There are {% total_posts %} posts so far.</p>
+    <p>You can find the notes based on subjects up in the naviation bar.</p>
+    <p>There are {% total_posts %} posts so far. See what the recent uploads are:</p>
+    <h3> Latest Uploads </h3>
+    <!-- this curly brackets is rendering the latest uploads, do the designing work in latest_uploads.html -->
+        {% show_latest_uploads %}
 </section>
 {% endblock content %}
