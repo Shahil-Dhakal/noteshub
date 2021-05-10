@@ -5,7 +5,7 @@ from django.utils.text import slugify
 from django.contrib.auth.models import User
 
 # package imports
-from abstracts.models import TimeStampedModel
+from posts.abstracts.models import TimeStampedModel
 
 # third-party imports
 from taggit.managers import TaggableManager

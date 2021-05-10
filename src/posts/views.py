@@ -117,11 +117,11 @@ def post_share(request, post_id):
             clean_data = form.cleaned_data
             # use the value inside clean_data to build our email
             post_url = request.build_absolute_uri(post.get_absolute_url())
-            subject = f"{clean_data['name']} recommends you read {post.title}"
-            message = f"Read {post.title} at {post_url}\n\n"\
+            subject = f"{clean_data['name']} recommends you check out {post.title}"
+            message = f"Check out {post.title} at {post_url}\n\n"\
                       f"{clean_data['name']}\'s comments: {clean_data['comments']}"
-            send_mail(subject, message, 'pratikdevkota82@gmail.com', [clean_data['to']])
             sent = True
+            send_mail(subject, message, 'pratikdevkota82@gmail.com', [clean_data['to']])
     else:
         form  = EmailPostForm()
     return render(request, template_name='posts/share.html',\
