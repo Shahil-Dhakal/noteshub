@@ -1,4 +1,6 @@
 {% extends "layouts/base.html" %}
+{% comment %}our custom template tag module{% endcomment %}
+{% load posts_tags %}
 
 {% block title %} Notes {% endblock title %}
 {% block content %}
@@ -19,7 +21,7 @@
         <p class="date">
             <i> Published on {{ post.created|date:'M j, Y' }} by {{ post.author }}</i>
         </p>
-        {{ post.description|truncatewords:30|linebreaks }}
+        {{ post.description|markdown|truncatewords_html:30 }}
     {% empty %}
         <h2>There appears to be no post for this subject.<h2>
     {% endfor %}

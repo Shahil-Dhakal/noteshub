@@ -47,7 +47,7 @@ class Post(TimeStampedModel):
     subject = models.CharField(max_length=8, choices=SUBJECT_CHOICES)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     description = models.TextField(max_length=200)
-    file_field = models.FileField(upload_to='user_uploads/', null=True)
+    file_field = models.FileField(upload_to='user_uploads/', null=True, blank=True)
     status = models.CharField(max_length=9, choices=STATUS_CHOICES, default='draft')
     tags = TaggableManager()
     # our custom manager

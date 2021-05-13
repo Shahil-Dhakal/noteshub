@@ -1,5 +1,6 @@
 {% extends "layouts/base.html" %}
 {% load crispy_forms_tags %}
+{% load posts_tags %}
 {% block title %}{{ post.title }}{% endblock title %}
 
 {% block content %}
@@ -7,8 +8,10 @@
     <p class="date">
         <i> Published on {{ post.created|date:'M j, Y' }} by {{ post.author }}</i>
     </p>
-    <p> {{ post.description|linebreaks }} </p>
-    <a href="{{post.file_field.url}}" download>Download</a>
+    <p> {{ post.description|markdown }} </p>
+    {% if post.file_field %}
+        <a href="{{post.file_field.url}}" download>Download</a>
+    {% endif %}
     <p>
         <a href="{% url "noteshub:posts_share" post.id %}">
             Share this post
@@ -27,7 +30,7 @@
                     {{ comment.created|date:'M j, Y' }}
                 </br>
             </p>
-                {{ comment.body|linebreaks }}
+                {{ comment.body|markdown }}
     {% empty %}
         <p> There are no comments yet </p>
     {% endfor %}

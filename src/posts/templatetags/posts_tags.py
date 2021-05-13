@@ -2,9 +2,13 @@
 
 # Core Django imports
 from django import template
+from django.utils.safestring import mark_safe
 
 # app-imports
 from posts.models import Post
+
+# third-party imports
+import markdown
 
 
 register = template.Library()
@@ -27,3 +31,13 @@ def show_latest_uploads(count=3):
     """
     latest_uploads = Post.published.order_by('-created')[:count]
     return { 'latest_uploads': latest_uploads }
+
+# template filters are registered the same as template tags
+@register.filter(name='markdown')
+def markdown_format(text):
+    """
+    Template filter function that renders the text given in markdown
+    syntax as HTML
+    """
+    # mark the output as safe HTML to be rendered in the template
+    return mark_safe(markdown.markdown(text))
